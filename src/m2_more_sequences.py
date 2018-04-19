@@ -10,8 +10,8 @@ for ITERATING through SEQUENCES, including selections from:
   -- Looking at two sequences in parallel
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Todd Kuebelbeck.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
@@ -103,10 +103,15 @@ def shortest_string(strings):
       :type strings: list[str]   or tuple(str)
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    string = strings[0]
 
+    for k in range(len(strings)):
+        if len(strings[k]) < len(string):
+            string = strings[k]
+    return string
 
 def run_test_index_of_largest_number():
     """ Tests the   index_of_largest_number   function. """
@@ -177,13 +182,19 @@ def index_of_largest_number(numbers, n):
     Type hints:
       :type numbers: list[float]   or tuple[float]
       :type n:       int
-
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    index = 0
+    curr_largest = 0
 
+    for k in range(n):
+        if numbers[k] > curr_largest:
+            index = k
+            curr_largest = numbers[k]
+    return index
 
 # ----------------------------------------------------------------------
 # Some problems iterate (loop) through the sequence accessing TWO
@@ -235,10 +246,16 @@ def number_of_stutters(s):
        :type s: str
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
 
+    count = 0
+
+    for k in range(len(s)-1):
+        if s[k] is s[k+1]:
+            count = count + 1
+    return count
 
 def run_test_is_palindrome():
     """ Tests the   is_palindrome   function. """
@@ -308,7 +325,7 @@ def is_palindrome(s):
       :type s: str
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     ####################################################################
@@ -318,6 +335,11 @@ def is_palindrome(s):
     ####################################################################
     # ------------------------------------------------------------------
 
+    for k in range(len(s)):
+        if s[k] is not s[(len(s) - 1) - k]:
+            return False
+        else:
+            return True
 
 # ----------------------------------------------------------------------
 # Some problems loop (iterate) through two or more sequences
@@ -375,9 +397,20 @@ def count_same(sequence1, sequence2):
       type: sequence2: tuple or list or string
     """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    count = 0
+
+    if len(sequence1) is not len(sequence2):
+        return -1
+    else:
+        for k in range(len(sequence1)):
+            if sequence1[k] is sequence2[k]:
+                count = count + 1
+    return count
+
+
 
 
 # ----------------------------------------------------------------------
